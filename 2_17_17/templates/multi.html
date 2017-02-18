@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div style='color:blue'>This website computes and gives prognosis data comparing the Palliative Prognostic Score (PaP along with the PaP-Delirium), Palliative Prognostic Index (PPI), Performance Status-Based Palliative Prognostic Index (PS-PPI), Palliative Performance Scale (PPS), Karnofsky Performance Status (KPS), and ECOG status which have been validated in patients with advanced cancer.<br><br>
+Please enter as many variables as possible, and this prognostic calculator will provide survival data based on published studies. Please keep in mind these outputs represent survival estimates only – it is important to use clinical judgement to interpret the results accordingly.</div><br>
+
+For convenience, here is a <a href="{{ url_for('reference') }}">reference to look up the PPS, KPS, and ECOG of a patient.</a><br><br>
+<form method='POST' action='/multi'>
+<table width=100%>
+<tr>
+    <th> </th>
+    <th style='text-align:left'>Select If Available:</th>
+    <th style='text-align:right'>Required For:</th></tr>
+<tr>
+    <td id="t1">Palliative Performance Scale (PPS)</td>
+    <td id="t1">{{ form.PPS_f(class_="field") }}</td>
+    <td id="t2">PPS, PPI</td></tr>
+<tr>
+    <td id="t1">Karnofsky Performance Status (KPS)</td>
+    <td id="t1">{{ form.KPS_f(class_="field") }}</td>
+    <td id="t2">KPS, PaP, D-PaP</td></tr>
+<tr>
+    <td id="t1">ECOG</td>
+    <td id="t1">{{ form.ECOG_f(class_="field") }}</td>
+    <td id="t2">ECOG, PS-PPI</td></tr>
+<tr>
+    <td id="t1">Oral Intake<sup>1</sup></td>
+    <td id="t1">{{ form.Oral_Intake_f(class_="field") }}</td>
+    <td id="t2">PPI, PS-PPI</td></tr>
+<tr>
+    <td id="t1">Edema</td>
+    <td id="t1">{{ form.Edema_f(class_="field") }}</td>
+    <td id="t2">PPI, PS-PPI</td></tr>
+<tr>
+    <td id="t1">Dyspnea<sup>2</sup></td>
+    <td id="t1">{{ form.Dyspnea_f(class_="field") }}</td>
+    <td id="t2">PPI, PS-PPI, PaP, D-PaP</td></tr>
+<tr>
+    <td id="t1">Delirium<sup>3</sup></td>
+    <td id="t1">{{ form.Delirium_f(class_="field") }}</td>
+    <td id="t2">PPI, PS-PPI, D-PaP</td></tr>
+<tr>
+    <td id="t1">Anorexia<sup>4</sup></td>
+    <td id="t1">{{ form.Anorexia_f(class_="field") }}</td>
+    <td id="t2">PaP, D-PaP</td></tr>
+<tr>
+    <td id="t1">Total WBC (cell/cc)<sup>5</sup></td>
+    <td id="t1">{{ form.WBC_f(class_="field") }}</td>
+    <td id="t2">PaP, D-PaP</td></tr>
+<tr>
+    <td id="t1">Lymphocyte Percentage<sup>5</sup></td>
+    <td id="t1">{{ form.Lymphocyte_f(class_="field") }}</td>
+    <td id="t2">PaP, D-PaP</td></tr>
+<tr>
+    <td id="t1">Clinician's Prediction of death, in weeks</td>
+    <td id="t1">{{ form.Clinical_Prediction_f(class_="field") }}</td>
+    <td id="t2">PaP, D-PaP</td></tr>
+</table><br>
+
+<input type=submit value='Prognosticate!'>
+</form>
+<br>
+
+<b>Notes</b><br>
+1: In the PPI, oral intake is considered normal if a patient is on total parenteral nutrition (TPN) for a bowel obstruction.
+<br>
+2: In the PPI dyspnea was positive if it was at present at rest. For the PaP & D-PaP, it was positive if it was present at the time of scoring, which for this calculator is assumed to be at rest as well.
+<br>
+3: In the PPI delirium is counted as absent if it is due to a single medication. The D-PaP study makes no such allowance for medication induced delirium, hence there are three options.
+<br>
+4: This is the <i>clinical symptom</i> of anorexia (ie, lack of appetite), not to be confused with cachexia or weight loss.<br>
+5: In the PaP and D-PaP, only solid tumors were included.  Therefore the WBC and lymphocyte inputs do not include options for neutropenia or lymphocytosis.
+
+{% endblock %}

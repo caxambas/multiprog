@@ -1,0 +1,70 @@
+<!doctype html>
+<title>Calculating Impending Death</title>
+<h1>How Likely Will This Patient Die in the Next 72 Hours?</h1>
+First, using your clinical judgement, guess a percentage estimate that this person will pass away in the next three days. If you do not know where to begin, consider using a general mortality score calculator such as SAPS II: <a href="http://clincalc.com/icumortality/sapsii.aspx">Here is an online SAPS II calculator</a> [1].  Alternatively, metastatic cancer patients admitted to the Acute Palliative Care Unit used in Dr. Hui's study had a pretest probabilty of 38% of dying within the next three days. [2]
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% from "_formhelpers.html" import render_field %}
+<form method='POST' action='/prepost'>
+        {{ form.hidden_tag }}
+    <dl>
+        {{ form.pretest.label }} {{ form.pretest(size=4) }}
+    </dl>
+Are any of the following present? (leave blank if unable to determine or you want to ignore):<br>
+Definitions for any new terms can be found below
+    <dl>
+    {{ render_field(form.death_rattle) }}
+    {{ render_field(form.pulseless_radial) }} 
+    {{ render_field(form.mandibular) }} 
+    {{ render_field(form.cheyne_stokes) }} 
+    {{ render_field(form.decreased_uop) }}
+    
+    {{ render_field(form.nr_pupils) }}
+    {{ render_field(form.decreased_verbal) }}
+    {{ render_field(form.decreased_visual) }}
+    {{ render_field(form.eyelids) }}
+    {{ render_field(form.nasolabial) }}
+    {{ render_field(form.hyper_neck) }}
+    {{ render_field(form.grunting) }}
+    {{ render_field(form.ugib) }}
+   
+    
+    <br>
+    {{ form.posttest.label }} {{ form.posttest(size=4, value=post_test_prob) }}
+    </dl>
+    <p><input type=submit value='Go'>
+</form>
+
+
+[1] Keep in mind however, that this will require labs (which may not be available or in the best interest of the patient). Secondly, this scoring system was originally intended for ICU mortality prediction without a temporal aspect aside from duration of hospital stay. However I have found <a href="https://www.ncbi.nlm.nih.gov/pubmed/9710096">a study</a> validating it in intermediate care patients whose average length of hospital stay of 3 +/-2.3 days, so it may not be unreasonable. 
+<br><br>
+[2] <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4352117/">Bedside clinical signs associated with impending death in patients with advanced cancer: Preliminary findings of a prospective longitudinal cohort study</a> Hui, David, et al., Cancer 2015.
+<br><br>
+[3] Caveats: These physical signs were studied only in patients with advanced cancer admitted to hospice units so may not be applicable to every patient encounter. Using multiple Likelihood Ratios in series on a pretest probability, while logical and intuitive, may not be a valid method <a href="http://www.thennt.com/diagnostics-and-likelihood-ratios-explained/">as explained in this post (look under the last paragraph of "What an LR Cannot Do")</a>.<br><br>
+[4] <b>Definitions for some of the less commonly known signs:</b>
+<ul>
+<li>Mandibular Breathing: See <a href="https://www.youtube.com/watch?v=S9sVQtb7R9c">this brief video</a> for a good overview</li>
+<li>Decreased verbal/visual stimuli:  Looking in the papers, I can't find exactly how they quantified this, I would just go with your gut</li>
+<li>Drooping of Nasolabial Fold: These are the 'smile lines', think of it as looking for relaxed facial muscle tone.</li>
+<li>Vocal Cord Grunting: "A sound produced predominantly on expiration, related to vibrations of the vocal cords."</li></ul>
+<br>
+<b>Sources:</b><br>
+<ul>
+<li>David Hui, et al. 2015. <a href="https://www.ncbi.nlm.nih.gov/pubmed/25676895">Bedside clinical signs associated with impending death in patients with advanced cancer: preliminary findings of a prospective, longitudinal cohort study</a>. Cancer Mar 14; 121(6), pgs 960-7.</li>
+<li>David Hui, et al. 2014. <a href="https://www.ncbi.nlm.nih.gov/pubmed/24760709">Clinical signs of impending death in cancer patients</a>. Oncologist, June; 19(6), pgs 681-7.</li>
+</ul>
+<br>
+Any questions, comments, etc... please email me at jpmax7 AT gmail dot com
+<br><br>
+This website, while inspired by the work of Dr. David Hui is in no means endorsed by him and please don't use this to make clinical judgements, it's just for fun.
+
+

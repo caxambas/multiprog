@@ -1,0 +1,24 @@
+<!doctype html>
+<title>MultiProg</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<div class=page>
+    <div class=metanav>
+    <a href="{{ url_for('multi') }}">Back to the Calculator</a>
+    </div>
+    {% if error %}
+        {% for e in error %}
+        <p class=error>{{ error[e] }}</p>
+        {% endfor %}
+    {% endif %}
+        
+    <div style='font-size:1.2em'><b>Combined PPS, PPI, PS-PPI, PaP and D-PaP calculators for estimating prognosis.</b></div>
+
+{% block body %}{% endblock %}
+    <div class=footer>
+        <hr>
+            <a href="about">About</a>
+            <a href="source">Source Code on Github</a>
+            <a href="email">Contact</a> 
+        <br>&#169; 2017, MIT open license
+    </div>
+</div>
