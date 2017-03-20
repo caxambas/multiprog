@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class=subtitle><b>Tools to Help Prognostication in Patients with Advanced Cancer</b></div>
+<br>
+
+<div class=maininput>
+    <b>For Predicting Days/Weeks/Months:</b>
+    
+    <ul>
+        <li><a href="{{ url_for('multi') }}">Multiple Model Prognostic Calculator</a><br>A combined prognostic calculator for patients with advanced cancer that incorporates the PPS, KPS, ECOG, PPI, PS-PPI PaP, D-PaP.</li></ul>
+     
+<b>For Predicting Impending Death (less than 72 hours)</b>
+    
+    <ul>
+        <li><a href="{{ url_for('impending_model') }}">Recursive Model</a><br>A model developed in the Investigating the Process of Dying study using the Palliative Perfomance Score (PPS) and the presence/absence of clinical signs.</li><br>
+        <li><a href="{{ url_for('impending_pp') }}">Pre-test/Post-test Probability Calculator</a><br>A calculator that takes a pre-test probability and applies positive and negative likelihood ratios based on physical signs as found in the Investigating the Process of Dying study.</li>
+    </ul>
+
+<b>Other</b>  
+    <ul>
+        <li><a href="{{ url_for('reference') }}">Performance Status References</a></li>  
+    </div><br>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<form method='POST' action='/impendingmodel'>
+<div class=subtitle><b>Predicting Impending Death (less than 72 hrs) in Advanced Cancer Patients</b></div>
+<div class=container1 style='text-align:center'>See Also: <a href="{{ url_for('impending_pp') }}"> Pre-test/Post-test Likelihood Calculator for Impending Death</a></div>
+<div style="color:red; margin: 0.5em 0; text-align:center""><b>Applicable to advanced cancer patients admitted to an acute palliative care unit. Has not been validated in other clinical scenarios!</b></div>
+<div class=maininput>
+    <b>From "A Diagnostic Model for Impending Death in Cancer Patients: Preliminary Report"<sup>2</sup></b><br><br>
+    <div style='font-size:14px'>
+    This model is used to calculate the probability of death in the next 72 hrs based on a model developed from observations of advanced cancer patients admitted to acute palliative care units. It uses the Palliative Performance Status and presence/absence of clinical signs.<br><br>
+    <b>Palliative Perfomance Status (PPS):</b> {{ rec_form.PPS }} <a style="margin-left:1em" href="{{ url_for('reference') }}" target="_blank">Reference to look up the PPS if needed</a><br><br>
+
+
+    For each of the following signs, check the box if present and leave blank if not. <b>If unfamiliar scroll below for some explanations.</b><br>
+    <table>
+    <tr><th> </th><th><b>Present?</th><th> </th><th>Present?</th><th> </th><th>Present?</th></b></tr>
+    <tr>
+        <td>{{ rec_form.nasolabial_field.label }}</td>
+        <td>{{ rec_form.nasolabial_field }}</td></tr>
+    <tr>
+        <td>{{ rec_form.death_rattle.label }}</td>
+        <td>{{ rec_form.death_rattle }}</td>
+        <td>{{ rec_form.pulseless_radial.label }}</td>
+        <td>{{ rec_form.pulseless_radial }}</td>
+        <td>{{ rec_form.mandibular.label }}</td>
+        <td>{{ rec_form.mandibular }}</td></tr>
+    <tr>
+        <td>{{ rec_form.cheyne_stokes.label }}</td>
+        <td>{{ rec_form.cheyne_stokes }}</td>
+        <td>{{ rec_form.nr_pupils.label }}</td>
+        <td>{{ rec_form.nr_pupils }}</td>
+        <td>{{ rec_form.decreased_verbal.label }}</td>
+        <td>{{ rec_form.decreased_verbal }}</td></tr>
+    <tr>
+        <td>{{ rec_form.decreased_visual.label }}</td>
+        <td>{{ rec_form.decreased_visual }}</td>
+        <td>{{ rec_form.eyelids.label }}</td>
+        <td>{{ rec_form.eyelids }}</td>
+        <td>{{ rec_form.hyper_neck.label }}</td>
+        <td>{{ rec_form.hyper_neck }}</td></tr>
+    <tr>
+        <td>{{ rec_form.grunting.label }}</td>
+        <td>{{ rec_form.grunting }}</td>
+        <td>{{ rec_form.ugib.label }}</td>
+        <td>{{ rec_form.ugib }}</td>
+        <td>{{ rec_form.cyanosis.label }}</td>
+        <td>{{ rec_form.cyanosis }}</td></tr>
+    </table></div><br>
+    <input type=submit name="btn" value='Calculate' style='width:10em;'><br><br>
+    <b><div class=container4>Probability of death in the next 72 hrs: {{ model_prob }}</b></div>
+
+</form>
+</div>
+
+<hr>
+
+<b>Definitions for signs that may be new:</b>
+<ul>
+<li>Drooping of Nasolabial Fold: These are the 'smile lines', that run from the nose to the corner of the mouth. Think of it as looking for relaxed facial muscle tone. See page 10 of [2] for an example.  Googling will mostly bring up its relation to cosmetic surgery.</li>
+<li>Mandibular Breathing: See <a href="https://www.youtube.com/watch?v=S9sVQtb7R9c" target="_blank">this brief video</a> for a good overview.</li>
+<li>Vocal Cord Grunting: "A sound produced predominantly on expiration, related to vibrations of the vocal cords."</li>
+<li>Decreased Response to Visual Stimuli: No eye tracking movement.</li>
+<li>Decreased Response to Verbal Stimuli: No verbal communication (noises don't count), unable to follow commands.</li>
+<li>Unable to close eyelids: Unable to close when asked, eyes open without observed blinking.</li>
+<li>The other signs are either self-explanatory or can be easily searched for online.</li>
+</ul>
+<div class=subdivide><b>Sources:</b></div>
+<div class=sources>
+<ol>
+    <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/8857241" target="_blank">Anderson F, Downing GM, Hill J, Casorso L, Lerch N. Palliative Performance Scale (PPS): A New Tool. J Palliative Care. 1996;12(1):5-11.</a></li>
+    <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/26218612" target="_blank">Hui D, Hess K, Dos Santos R, et al. A Diagnostic Model for Impending Death in Cancer Patients: Preliminary Report. Cancer 2015;121(21): 3914-3921.</a></li>
+    <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/25676895" target="_blank">Hui D, Dos Santos R, Chisholm G, et al. Bedside clinical signs associated with impending death in patients with advanced cancer: preliminary findings of a prospective, longitudinal cohort study. Cancer. 2015; 121(6):960-7.</a></li>
+    <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/24760709" target="_blank">Hui D, Dos Santos R, Chisholm G, et al. Clinical signs of impending death in cancer patients. Oncologist. 2014; 19(6):681-7.</a></li>
+</ol></div>
+
+{% endblock %}

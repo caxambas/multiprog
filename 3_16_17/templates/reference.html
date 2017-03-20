@@ -1,0 +1,192 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class=subtitle><b>Performance Status/Scale Reference</b></div>
+<br>
+<b>Palliative Perfomance Score (PPS)</b><sup>1</sup>
+
+<table id="reference", style="width:100%">
+    <tr>
+        <th>PPS %</th>
+        <th>Ambulation</th>
+        <th>Activity and Evidence of Disease</th>
+        <th>Self-Care</th>
+        <th>Intake</th>
+        <th>Conscious Level</th></tr>
+    <tr>
+        <td>100</td>
+        <td>Full</td>
+        <td>Normal Activity, No Evidence of Disease</td>
+        <td>Full</td>
+        <td>Normal</td>
+        <td>Full</td></tr>
+    <tr>
+        <td>90</td>
+        <td>Full</td>
+        <td>Normal Activity, Some Evidence of Disease</td>
+        <td>Full</td>
+        <td>Normal</td>
+        <td>Full</td></tr>
+    <tr>
+        <td>80</td>
+        <td>Full</td>
+        <td>Normal Activity with Effort, Some Evidence of Disease</td>
+        <td>Full</td>
+        <td>Normal or Reduced</td>
+        <td>Full</td></tr>
+    <tr>
+        <td>70</td>
+        <td>Reduced</td>
+        <td>Unable Normal Job/Work, Some Evidence of Disease</td>
+        <td>Full</td><td>Normal or Reduced</td>
+        <td>Full</td></tr>
+    <tr>
+        <td>60</td>
+        <td>Reduced</td>
+        <td>Unable Hobby/House Work, Significant Disease</td>
+        <td>Occasional Assistance Necessary</td>
+        <td>Normal or Reduced</td>
+        <td>Full or Confusion</td></tr>
+    <tr>
+        <td>50</td>
+        <td>Mainly Sit/Lie</td>
+        <td>Unable to Do Any Work, Extensive Disease</td>
+        <td>Considerable Assistance Necessary</td>
+        <td>Normal or Reduced</td>
+        <td>Full or Confusion</td></tr>
+    <tr>
+        <td>40</td>
+        <td>Mainly in Bed</td>
+        <td>As Above</td>
+        <td>Mainly Assistance</td>
+        <td>Normal or Reduced</td>
+        <td>Full, Drowsy or Confusion</td></tr>
+    <tr>
+        <td>30</td>
+        <td>Totally Bed Bound</td>
+        <td>As Above</td>
+        <td>Total Care</td>
+        <td>Reduced</td>
+        <td>Full, Drowsy or Confusion</td></tr>
+    <tr>
+        <td>20</td>
+        <td>As Above</td>
+        <td>As Above</td>
+        <td>As Above</td>
+        <td>Minimal Sips</td>
+        <td>Full, Drowsy or Confusion</td></tr>
+    <tr>
+        <td>10</td>
+        <td>As Above</td>
+        <td>As Above</td>
+        <td>As Above</td>
+        <td>Mouth Care Only</td>
+        <td>Drowsy or Coma</td></tr>
+    <tr>
+        <td>0</td>
+        <td>Death</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</table><br>
+<b>PPS Instructions: </b>Starting at the 'Ambulation' column, find the decile that best fits the patient. Stronger performance factors are located on the left and if the patient doesn't fit all in one decile give preference to the ones that are leftmost. Self care is defined as things like being able to do mouth care, shave, bathe, etc...<br><br>
+
+<b>Karnofsky Performance Status</b><sup>2</sup>
+<table id="reference">
+    <tr>
+        <th>KPS %</th>
+        <th>Description</th>
+
+    <tr>
+        <td>100</td>
+        <td>Normal, no complaints. No evidence of disease.</td></tr>
+   <tr>
+        <td>90</td>
+        <td>Able to carry on normal activity, minor signs or symptoms of disease.</td></tr>
+    <tr>
+        <td>80</td>
+        <td>Normal activity with effort, some signs or symptoms of disease.</td></tr>
+    <tr>
+        <td>70</td>
+        <td>Cares for self, unable to carry on normal activity or to do active work.</td></tr>
+    <tr>
+        <td>60</td>
+        <td>Requires occasional assistance, but is able to care for most of his/her personal needs.</td></tr>
+    <tr>
+        <td>50</td>
+        <td>Requires occasional assitance, but is able to care for most of his/her personal needs.</td></tr>
+    <tr>
+        <td>40</td>
+        <td>Disabled. Requires special care and assistance.</td></tr>
+    <tr>
+        <td>30</td>
+        <td>Severely disabled, hospital admission is indicated although death is not imminent.</td></tr>
+    <tr>
+        <td>20</td>
+        <td>Very sick, hospital admission necessary. Active support treatment necessary.</td></tr>
+    <tr>
+        <td>10</td>
+        <td>Moribund, fatal processes progressing rapidly</td></tr>
+    <tr>
+        <td>0</td>
+        <td>Death</td></tr>
+</table><br>
+
+<b>ECOG</b><sup>3</sup>
+<table id="reference">
+<tr>
+    <th>Score</th>
+    <th>Description</th></tr>
+<tr>
+    <td>0</td>
+    <td>Asymptomatic. Fully active, able to carry on all pre-disease activities without restriction.</td></tr>
+<tr>
+    <td>1</td>
+    <td>Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature (e.g. light house work, office work).</td></tr>
+<tr>
+    <td>2</td>
+    <td>Ambulatory and capable of all selfcare but unable to carry out any work activities. Up and about more than 50% of waking hours.</td></tr>
+<tr>
+    <td>3</td>
+    <td>Capable of only limited selfcare, confined to bed or chair more than 50% of waking hours.</td></tr>
+<tr>
+    <td>4</td>
+    <td>Completely disabled. Cannot carry on any selfcare. Totally confined to bed or chair</td></tr>
+<tr>
+    <td>5</td>
+    <td>Death</td></tr>
+</table>
+<br>
+<b>Dealing with Differences Between the ECOG, KPS and PPS.</b>
+<p>In this tool, we check for agreement among the given performance status variables in two ways. First, we check that the PPS and KPS differ by no more than 20%.  Secondly, to compare ECOG with PPS and KPS, we make sure that the estimates are no more than one 'level' apart based on the following paper.<sup>4</sup></p>
+<table id="reference">
+<tr>
+    <th style="padding-right:1em">ECOG</th>
+    <th>KPS/PPS</th></tr>
+<tr>
+    <td>0</td>
+    <td>100</td></tr>
+<tr>
+    <td>1</td>
+    <td>80-90</td></tr>
+<tr>
+    <td>2</td>
+    <td>60-70</td></tr>
+<tr>
+    <td>3</td>
+    <td>40-50</td></tr>
+<tr>
+    <td>4</td>
+    <td>10-30</td></tr>
+</table>
+<p>For example, an ECOG of 0 and a PPS/KPS of 80% are reasonable (one level apart), however a ECOG of 4 and a PPS/KPS 60% should raise questions about the accuracy of the scoring and will raise a flag.</p>
+
+<div class=subdivide><b>Sources:</b></div>
+<div class=sources>
+<ol>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/8857241" target="_blank">Anderson F, Downing GM, Hill J, Casorso L, Lerch N. Palliative Performance Scale (PPS): A New Tool.  J Palliative Care. 1996;12(1):5-11.</a></li>
+<li><a href="http://onlinelibrary.wiley.com/doi/10.1002/1097-0142(194811)1:4%3C634::AID-CNCR2820010410%3E3.0.CO;2-L/full" target="_blank">Karnofsky DA, Abelmann WH, Craver LF, Burchenal JH. The Use of the Nitrogen Mustards in the Palliative Treatment of Carcinoma, With Particular Reference to Bronchogenic Carcinoma. Cancer. 1948;1(4):634-656.<a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/7165009" target="_blank">Oken MM, Creech RH, Tormey DC, et al. Toxicity And Response Criteria Of The Eastern Cooperative Oncology Group. Am J Clin Oncol. 1982;5:649-655.</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/20674334" target="_blank">Ma C, Bandukwala S, Burman D, Bryson J, Seccareccia D, et al. Interconversion of Three Measures of Performance Status: An Empirical Analysis. Eur J Cancer. 2010;46(18):3175-83.</a></li> 
+</ol>
+</div>
+
+{% endblock %}
+

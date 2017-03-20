@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% from "_formhelpers.html" import list2, notavailable, general_list %}
+<div class=subtitle><b>Estimating Prognosis in Advanced Cancer Patients Using Multiple Prognostic Models</b></div>
+<div class=container1>Keep in mind these outputs represent survival estimates only – use clinical judgement to interpret the results accordingly.</div>
+<div class=mainresults>
+<table id='summary'>
+<tr><th>Model</th><th>Score</th><th>Probability of Survival</th><th>Median Survival</th><th>Communicating with Patients and Families</th></tr>
+{{ general_list(ppi_output, 'Palliative Prognostice Index (PPI):') }}
+{{ general_list(psppi_output, 'Performance Status-Based Palliative Prognostic Index (PS-PPI):') }}
+{{ general_list(pap_output, 'Palliative Prognostic Score (PaP):') }}
+{{ general_list(dpap_output, 'Palliative Prognostic Score with Delirium (D-PaP):') }}
+{{ general_list(pps_output, 'Palliative Performance Scale (PPS):') }}
+{{ general_list(kps_output, 'Karnofsky Performance Status (KPS):') }}
+{{ general_list(ecog_output, 'ECOG Performance Status:') }}
+</table></div>
+{% if clinical_guess %}
+    <div class=container2><b>Your Estimate:</b>  {{ clinical_guess }} day(s)</div>
+{% endif %}
+
+{% if pps_output.is_days_survival or kps_output.is_days_survival or ecog_output.is_days_survival or ppi_output.is_days_survival or psppi_output.is_days_output or pap_output.is_days_survival or dpap_output.is_days_survival or cg_is_days %}
+    <p>Since at least one prediction included <i>days</i> of survival (as we define below), consider checking likelihood of impending death (less than 72 hrs) with:
+    <ul>
+        <li><a href="{{ url_for('impending_model') }}" target="_blank">An impending death tool based on a model in acute palliative care unit admissions.</a></li> 
+        <li><a href="{{ url_for('impending_pp') }}" target="_blank">An impending death tool using pretest probability and likelihood ratios from physical signs.</a></li>
+    </ul>
+{% endif %}
+
+{% if incomplete_models %}
+<div class=container1>
+    Insufficient data for: {{ incomplete_models }}
+</div>
+{% endif %}
+
+<div class=container2>The inputs you gave were: {{ review }}.</div>
+<ul>
+    <li>Median survival ranges are taken from the original validation studies for the models as well as select large validation studies (except for ECOG and PS-PPI, which each use one study currently).</li><br>
+    <li>'Communicating with Patients and Families' gives general estimations based on the following definitions: 'days' of expected survival is 10 days or less, 'weeks' is 11 to 60 days, and months includes 61 days and up.</li><br>
+    <li>It is important to note that prognostic estimates can differ significantly in the same patient based on the clinical scenario in which they are being evaluated. In the more detailed results below, some papers have been divided by patient location or scenario.</li>
+</ul>
+        
+<b><div class=subdivide>Further Details, by Paper and Patient Location:</div></b><br>
+    
+{{ list2(ppi_output, 'PPI') }}
+{{ list2(psppi_output, 'PS-PPI') }}
+{{ list2(pap_output, 'PaP') }}
+{{ list2(dpap_output, 'D-PaP') }}
+{{ list2(pps_output, 'PPS') }}
+{{ list2(kps_output, 'KPS') }}
+{{ list2(ecog_output, 'ECOG') }}
+
+<div class=subdivide><b>Sources:</b></div>
+<div class=sources>
+
+Palliative Prognostic Index (PPI):
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/10225699">Morita T, Tsunoda J, Inoue S, Chihara S. Survival prediction of terminally ill cancer patients by clinical symptoms: development of a simple indicator. Jpn J Clin Oncol. 1999;29:156-159.</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/26074396">Baba M, Maeda I, Morita T, et al. Survival prediction for advanced cancer patients in the real world: a comparison of the Palliative Prognostic Score, Delirium-Palliative Prognostic Score, Palliative Prognostic Index and modified Prognosis in Palliative Care Study predictor model. Eur J Cancer. 2015;51:1618-1629.</a></li></ul>
+
+Performance Status-Based Palliative Prognostic Index (PS-PPI):
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/27926777">Yamada T, Morita T, Maeda I, et al. A prospective, multicenter cohort study to validate a simple performance status–based survival prediction system for oncologists. Cancer. 2016; doi:10.1002/cncr.30484</a></li>
+</ul>
+
+Palliative Prognostic Score (PaP):
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/10203876">Maltoni M, Nanni O, Pirovano M, et al. Successful validation of the Palliative Prognostic Score in terminally ill cancer patients. Italian Multicenter Study Group on Palliative Care. J Pain Symptom Manage. 1999;17:240-247.</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/26074396">Baba M, Maeda I, Morita T, et al. Survival prediction for advanced cancer patients in the real world: a comparison of the Palliative Prognostic Score, Delirium-Palliative Prognostic Score, Palliative Prognostic Index and modified Prognosis in Palliative Care Study predictor model. Eur J Cancer. 2015;51:1618-1629.</a></li></ul>
+
+Delirium-Palliative Prognostric Score (D-PaP):
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/22042788">Scarpi E, Maltoni M, Miceli R, Mariani L, Caraceni A, Amadori D, Nanni O. Survival prediction for terminally ill cancer patients: revision of the palliative prognostic score with incorporation of delirium. Oncologist. 2011;16(12):1793–9.</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/26074396">Baba M, Maeda I, Morita T, et al. Survival prediction for advanced cancer patients in the real world: a comparison of the Palliative Prognostic Score, Delirium-Palliative Prognostic Score, Palliative Prognostic Index and modified Prognosis in Palliative Care Study predictor model. Eur J Cancer. 2015;51:1618-1629.</a></li></ul>
+Palliative Perfomance Score (PPS): 
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/18251442">Downing M, Lau F, Lesperance M, et al. Meta-analysis of Survival Prediction with Palliative Performance Scale. J Pall Care. 2007;23(4):245-252.</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/25118208">Jang RW, Caraiscos VB, Swami N, et al. Simple prognostic model for patients with advanced cancer based on performance status. J Oncol Pract. 2014;10:e335–e341.</a></li></ul>
+
+Karnofsky Performance Status (KPS):
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/25118208">Jang RW, Caraiscos VB, Swami N, et al. Simple prognostic model for patients with advanced cancer based on performance status. J Oncol Pract. 2014;10:e335–e341.</a></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/3382303">Reuben DB, Mor V, Hiris, J. Clinical Symptoms and Length of Survival in Patients with Terminal Cancer. Arch Intern Med. 1988;148:1586-1591.</a></li></ul>
+
+ECOG Performance Status:
+<ul>
+<li><a href="https://www.ncbi.nlm.nih.gov/pubmed/25118208">Jang RW, Caraiscos VB, Swami N, et al. Simple prognostic model for patients with advanced cancer based on performance status. J Oncol Pract. 2014;10:e335–e341.</a></li></ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+<!doctype html>
+<title>PredictSurvival.com</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<body>
+<img src="/static/img/ybg_g3.jpg" class="bg" alt="bkg">
+<div class=header>
+    <a href="{{ url_for('multi') }}">PredictSurvival.com</a>
+</div>
+<div class=page>
+
+    {% if error %}
+        <div class=warning>
+        
+        {% for e in error %}
+            {{ error[e] }}<br>
+        {% endfor %}
+        </div>
+    {% endif %}
+
+{% block body %}
+
+{% endblock %}
+<hr>
+    <div class=footer>
+        <div class=container3>
+            <b>Disclaimer:</b> Please keep in mind the information given on this website represents survival estimates only – it is important to use clinical judgement to interpret the results accordingly. <i>Do not use this information without the input of a healthcare provider.</i>
+        </div>
+        <br>
+        
+        <a href="{{ url_for('list') }}">List of Calculators</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="https://github.com/caxambas/multiprog" target="_blank">See Code on Github</a>
+        
+        <br>
+        <br>JP Maxwell, MD and David Hui, MD, MSc
+        <br><br>Last Updated 3/16/2017
+    </div>
+    
+</div>
+</body>

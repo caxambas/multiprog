@@ -1,0 +1,74 @@
+Todo:
+
+Make sure I have all sources in the same style *DONE
+Add a link to go straight to the impending death calculators? *DONE
+Make sure all sources open into a new page *DONE
+Add a disclaimer at the bottom *DONE
+
+Add more to the about page
+    -nonprofit
+    -does not save any data
+    -Not endorsed 
+    -If have suggestions
+    -remove PIPs
+    
+Decrease/optimize background image *DONE (175! kb... should be ok)
+
+To Discuss with Dr. Hui:
+
+Additions he should see:
+    -Addition to reference about interconversion between scoring (Ma paper)
+    -Addition to PPS/KPS dif 30% and ECOG validations
+    -So there is a little bit of inconsistency in how strict we are, but it allows leeway so I would prefer not shutting people out
+    
+    -Addition of links that pop up if there is a prediction of days
+    -Should we include both pre/post-test and model?
+    -How should I name them?
+
+Probabilities
+    -PS-PPI issue with score <=3.5
+    -Baba PPI, PaP, D-PaP for score 4-6 (have two bounds)
+        -currently not reported
+    -Morita didn't give prob for ppi < 4, I just inverted the data
+    
+Should we add additional information or links up front about each model (such as another reference page that gives a simple overview of each model and how it works?)
+
+Disclaimer ok?
+
+Emails
+
+"Start Screen" (should we have this vs have user land on the Multiple calculator)
+    -I think focus should be on the multiple model, with link at bottom to other ones and the suggestion as made
+
+10 days vs 14 days?
+
+Funding
+
+****
+-FIx error *DONE
+-Add models at top, then PPS etccc *DONE
+-change clinician prediction to days *DONE
+
+***
+-Make pre/post look nicer (output location specifically) *DONE
+-Add something more to recursive model about needing to make sure present/absent *DONE
+-See if there are other LRs (good negative ones) *LATER
+-Flush out the About section *DONE
+-Decrease size of bg image (at least to 400 kb, 100 kb would be nicest)
+-Add emails *DONE
+-update update *DONE
+-add highliting to link images *DONE
+
+When I email Dr. Hui:
+-Make sure he sees PS-PPI is there and if ok
+-send him address
+-send him photo
+
+Real Life stuff:
+-Finish proctoring cases and scan them off *DONE
+-Taxes
+    -Get W2 from Yakima Memorial
+    -Get tax form from church donations
+-Go to meeting (bring IQ pager)
+-Figure out issue with additional check from Yak Mem
+-Buy auction items

@@ -1,0 +1,60 @@
+
+{% macro list2(a, s) %}
+    {% if a.is_available %}
+        <b><div style='font-size:1.2em'>{{ s }} <div style='float:right'>Score: {{ a.s_score }}</div></b></div> 
+        <div style='clear: both;'></div>   
+        <table id='details'>
+        <tr><th>Source:</th><th>Location:</th><th>Probability:</th><th>Median Survival:</th><th>Notes:</th></tr>
+            {% for i in a.papers %}
+                <tr>
+                    <td>{{i.cite}}</td>
+                    <td>{{i.location}}</td>
+                    {% if i.prob %}
+                        <td>{{i.prob}}</td>
+                    {% else %}
+                        <td>Not reported</td>
+                    {% endif %}
+                    <td>{{i.median}}</td>
+                    <td>{{i.notes}}</td>
+                </tr>
+            {% endfor %}
+        </table><br><br>  
+    {% endif %}
+{% endmacro %}
+
+
+{% macro general_list(a, s) %}
+    {% if a.is_available %}
+        <tr>
+            <td><b>{{ s }}</b></td>
+            <td>{{ a.s_score }}</td>
+            <td>{{ a.s_prob }}</td>
+            <td>{{ a.s_median_range }}</td>
+            <td>Predicts <i>{{ a.communicate }}</i> of survival</td>
+        </tr>
+    {% endif %}
+{% endmacro %}
+    
+{% macro render_field(field) %}
+<div style="float: left">{{ field.label }}
+</div>
+<div style="margin: 0 auto; width: 400px;">
+    {% for subfield in field %} 
+        <td>{{ subfield }} </td> 
+        <td>{{ subfield.label }} </td> 
+    {% endfor %}
+</div>      
+{% endmacro %}
+
+{% macro render_field(field) %}
+<tr>
+    <td><div style="float: left">{{ field.label }}</div></td>
+    
+<div style="margin: 0 auto; width: 400px;">
+    {% for subfield in field %} 
+        <td>{{ subfield }} </td> 
+        <td>{{ subfield.label }} </td> 
+    {% endfor %}
+</div>      
+{% endmacro %}       
+      

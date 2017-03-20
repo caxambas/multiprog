@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% from "_formhelpers.html" import render_field %}
+
+<div class=subtitle>
+<b>Calculating Impending Death with Likelihood Ratios and Pretest Probability</b></div>
+<div class=container1 style='text-align:center'>See Also: <a href="{{ url_for('impending_model') }}">Recursively Developed Model for Impending Death</a></div>
+<div style="color:red; margin: 0.5em 0; text-align:center"><b>Applicable to advanced cancer patients admitted to an acute palliative care unit. Has not been validated in other clinical scenarios!</b></div>
+<div class=maininput style='font-size:14px'>
+First, using your clinical judgement, guess a percentage estimate that this person will pass away in the next three days. For example, advanced cancer patients admitted to an acute palliative care unit in the study these likelihood ratios (LRs) were derived from had a pretest probabilty of 38% of dying within three days.<sup>3</sup>
+
+<form method='POST' action='/impendingprepost'>
+    <dl>
+        <b>Pre-test Probability: {{ pp_form.pretest(size=4) }} %</b><br>
+        
+    </dl>
+Are any of the following present? Definitions can be found below.<br><br>
+    <table style=width:100%>
+    <tr>
+        <th style='text-align:left'>Sign</th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+        <th style='text-align:left'>Pos LR</th>
+        <th style='text-align:left'>Neg LR</th></tr>
+    {{ render_field(pp_form.nr_pupils) }}
+        <td>16.7</td>
+        <td>0.86</td></tr>
+    {{ render_field(pp_form.pulseless_radial) }}
+        <td>15.6</td>
+        <td>0.89</td></tr>  
+    {{ render_field(pp_form.decreased_uop) }}
+        <td>15.2</td>
+        <td>0.77</td></tr>
+    {{ render_field(pp_form.eyelids) }}
+        <td>13.6</td>
+        <td>0.8</td></tr>
+    {{ render_field(pp_form.cheyne_stokes) }} 
+        <td>12.4</td>
+        <td>0.9</td></tr>
+    {{ render_field(pp_form.grunting) }}
+        <td>11.8</td>
+        <td>0.82</td></tr>
+    {{ render_field(pp_form.ugib) }}
+        <td>10.3</td>
+        <td>0.97</td></tr>
+    {{ render_field(pp_form.mandibular) }} 
+        <td>10.0</td>
+        <td>0.8</td></tr>              
+    {{ render_field(pp_form.death_rattle) }}
+        <td>9.0</td>
+        <td>0.8</td></tr>
+    {{ render_field(pp_form.decreased_verbal) }}
+        <td>8.3</td>
+        <td>0.73</td></tr> 
+    {{ render_field(pp_form.nasolabial) }}
+        <td>8.3</td>
+        <td>0.69</td></tr>
+    {{ render_field(pp_form.hyper_neck) }}
+        <td>7.3</td>
+        <td>0.82</td></tr> 
+    {{ render_field(pp_form.decreased_visual) }}
+        <td>6.7</td>
+        <td>0.72</td></tr> 
+
+    </table>
+    <br>
+    <input type=submit name="btn" value='Calculate' style='width:10em;'><br>
+    <div class=container4><b>Post-test Probability (of death in the next 72 hrs): {{ pp_prob }}{% if pp_prob %}%{% endif %}</b></div>
+    
+    
+</form>
+</div>
+
+<hr>
+<b>Definitions for signs that may be new:</b>
+<ul>
+    <li>Drooping of Nasolabial Fold: These are the 'smile lines', that run from the nose to the corner of the mouth. Think of it as looking for relaxed facial muscle tone. See page 10 of [2] for an example.  Googling will mostly bring up its relation to cosmetic surgery.</li>
+    <li>Mandibular Breathing: See <a href="https://www.youtube.com/watch?v=S9sVQtb7R9c" target="_blank">this brief video</a> for a good overview.</li>
+    <li>Vocal Cord Grunting: "A sound produced predominantly on expiration, related to vibrations of the vocal cords."</li>
+    <li>Decreased Response to Visual Stimuli: No eye tracking movement.</li>
+    <li>Decreased Response to Verbal Stimuli: No verbal communication (noises don't count), unable to follow commands.</li>
+    <li>Unable to close eyelids: Unable to close when asked, eyes open without observed blinking.</li>
+    <li>The other signs are either self-explanatory or can be easily searched for online.</li>
+</ul>
+
+<div class=subdivide><b>Sources:</b></div>
+<div class=sources>
+<ol>
+    <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/8857241" target="_blank">Anderson F, Downing GM, Hill J, Casorso L, Lerch N. Palliative Performance Scale (PPS): A New Tool. J Palliative Care. 1996;12(1):5-11.</a></li>
+    <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/26218612" target="_blank">Hui D, Hess K, Dos Santos R, et al. A Diagnostic Model for Impending Death in Cancer Patients: Preliminary Report. Cancer 2015;121(21): 3914-3921.</a></li>
+    <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/25676895" target="_blank">Hui D, Dos Santos R, Chisholm G, et al. Bedside clinical signs associated with impending death in patients with advanced cancer: preliminary findings of a prospective, longitudinal cohort study. Cancer. 2015; 121(6):960-7.</a></li>
+    <li><a href="https://www.ncbi.nlm.nih.gov/pubmed/24760709" target="_blank">Hui D, Dos Santos R, Chisholm G, et al. Clinical signs of impending death in cancer patients. Oncologist. 2014; 19(6):681-7.</a></li>
+</ol>
+</div>
+{% endblock %}

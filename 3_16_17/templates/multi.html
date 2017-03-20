@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class=subtitle><b>Estimating Prognosis in Advanced Cancer Patients Using Multiple Prognostic Models</b></div>
+<p>This website gives prognostic data based on the Palliative Prognostic Score (PaP along with the Delirium-PaP), Palliative Prognostic Index (PPI), Performance Status-Based Palliative Prognostic Index (PS-PPI), Palliative Performance Scale (PPS) and various Performance Status Scales (KPS, PPS, and ECOG) in patients with advanced cancer.</p>
+<p>Enter as many variables as possible and this prognostic calculator will provide survival data based on published studies.</p>
+
+<div class=maininput>
+    <form method='POST' action='/'>
+        <table style='width:90%; margin: auto;'>
+        <tr>
+            <th> </th>
+            <th style='text-align:left'>Select If Available:</th>
+            <th style='text-align:right'>Required For:</th></tr>
+        <tr>
+            <td id="t1">Palliative Performance Scale (PPS)</td>
+            <td id="t1">{{ form.PPS_f(class_="field") }}</td>
+            <td id="t2">PPS, PPI</td></tr>
+        <tr>
+            <td id="t1">Karnofsky Performance Status (KPS)</td>
+            <td id="t1">{{ form.KPS_f(class_="field") }}</td>
+            <td id="t2">KPS, PaP, D-PaP</td></tr>
+        <tr>
+            <td id="t1">ECOG</td>
+            <td id="t1">{{ form.ECOG_f(class_="field") }}</td>
+            <td id="t2">ECOG, PS-PPI</td></tr>
+        <tr>
+            <td id="t1">Edema</td>
+            <td id="t1">{{ form.Edema_f(class_="field") }}</td>
+            <td id="t2">PPI, PS-PPI</td></tr>
+        <tr>
+            <td id="t1">Oral Intake<sup>1</sup></td>
+            <td id="t1">{{ form.Oral_Intake_f(class_="field") }}</td>
+            <td id="t2">PPI, PS-PPI</td></tr>
+        <tr>
+            <td id="t1">Dyspnea<sup>2</sup></td>
+            <td id="t1">{{ form.Dyspnea_f(class_="field") }}</td>
+            <td id="t2">PPI, PS-PPI, PaP, D-PaP</td></tr>
+        <tr>
+            <td id="t1">Delirium<sup>3</sup></td>
+            <td id="t1">{{ form.Delirium_f(class_="field") }}</td>
+            <td id="t2">PPI, PS-PPI, D-PaP</td></tr>
+        <tr>
+            <td id="t1">Anorexia<sup>4</sup></td>
+            <td id="t1">{{ form.Anorexia_f(class_="field") }}</td>
+            <td id="t2">PaP, D-PaP</td></tr>
+        <tr>
+            <td id="t1">Total WBC (cell/cc)<sup>5</sup></td>
+            <td id="t1">{{ form.WBC_f(class_="field") }}</td>
+            <td id="t2">PaP, D-PaP</td></tr>
+        <tr>
+            <td id="t1">Lymphocyte Percentage<sup>5</sup></td>
+            <td id="t1">{{ form.Lymphocyte_f(class_="field") }}</td>
+            <td id="t2">PaP, D-PaP</td></tr>
+        <tr>
+            <td id="t1">Your Prediction of Survival</td>
+            <td id="t1">{{ form.Clinical_Prediction_f(class_="decimal_field") }} days</td>
+            <td id="t2">PaP, D-PaP</td></tr>
+        <tr>
+            <td> </td><td><input type=submit value='Prognosticate!' style='width:12em; margin-top:0.5em; height:3em;'></td>
+        </tr>
+        </table>
+
+        
+    </form>
+</div>
+<br>
+For convenience, here is a <a href="{{ url_for('reference') }}" target=_blank"">reference to look up the PPS, KPS, and ECOG of a patient.</a><br><br>
+<b>Notes:</b>
+<ol>
+<li> In the PPI, oral intake is considered normal if a patient is on total parenteral nutrition (TPN) for a bowel obstruction.
+
+<li>In the PPI dyspnea was positive if it was at present at rest. For the PaP & D-PaP, it was positive if it was present at the time of scoring, which for this calculator is assumed to be at rest as well.
+<li>In the PPI delirium is counted as absent if it is due to a single medication. The D-PaP study makes no such allowance for medication induced delirium, hence there are three options.
+<li>This is the <i>clinical symptom</i> of anorexia (ie, lack of appetite), not to be confused with cachxia or weight loss.
+<li>In the PaP and D-PaP models, scoring for for low WBCs or high lymphocytes was not reported. In practice we input low WBCs or high lymphocyte counts as "normal".
+</ol>
+
+{% endblock %}

@@ -1,0 +1,242 @@
+body        {
+    font-family: "Helvetica", "Arial", sans-serif;
+    line-height: 1.2;
+    margin: 0;
+}
+
+td#t1       {
+    text-align:left;
+
+}
+td#t2       {
+    text-align:right
+} 
+table#summary    {
+    font-size:1em;
+    border-collapse: collapse;
+    text-align:left;
+    width:100%;
+}
+
+#summary td      {
+    padding: 0.2em 1em;
+}
+
+#summary th      {
+    padding: 0 1em;
+}
+
+#summary tr:nth-child(even){
+    background-color: #FFFFFF;
+}
+
+table#details   {
+    font-size:1em;
+    text-align:left;
+}
+
+#details tr:nth-child(even){background-color: #F0F0F0;}
+    
+#details td     {
+    padding: 0 0.5em;
+}
+
+#details th      {
+    padding: 0 0.5em;
+}
+
+
+table#reference {
+    border: 1px solid black;
+    font-size:0.8em;
+    border-collapse: collapse;
+}
+
+#reference td   {
+    border-bottom: 1px solid #000000;
+}
+#reference th   {
+    border-bottom: 1px solid #000000;
+}
+
+#reference tr:nth-child(even){background-color: #F0F0F0;}
+
+.header {
+    padding: 1em;
+    text-align: center;
+    opacity: 0.9;
+    
+
+}
+
+.header a        {
+    text-decoration:none;
+    color:#000000;
+    font-family: "Georgia";
+    font-size: 2.5em;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 10px 20px;
+    
+}
+
+.header a:visited {
+    text-decoration:none;
+    color:#000000;
+}
+
+.sources a {
+    font-size:0.9em;
+    text-decoration:underline;
+}
+
+.sources a:visited {
+    font-size:0.9em;
+    text-decoration:underline;
+}
+
+.page       {
+    background-color:#FFFFFF;
+    opacity: 0.9;
+    margin: 0 auto 5em;
+    width: 80%;
+    border-radius: 10px;
+    padding: 0.8em 0.8em 0.8em 0.8em;
+    border: 2px solid black;
+}
+
+.subtitle    {
+    background: #D8BB9A;
+    padding: 0.5em;
+    border-radius: 10px;
+    margin: 0;
+    text-align: center;
+}
+
+.subdivide  {
+    background: #D8BB9A;
+    padding: 0.5em;
+    border-radius: 10px;
+    margin: 0.5em 0;
+    text-align: center;
+}
+
+.warning     {
+    background: #FFA0A0;
+    padding: 0.5em;
+    text-align: center;
+    border-radius: 10px;
+    margin: 0 0 0.5em 0;
+}
+
+.field {
+    width: 12em;
+}
+
+.decimal_field {
+    width: 11.3em;
+}
+
+.footer     {
+    margin: 1.5em auto 0;
+    text-align: center;
+}
+
+.footer a   {
+    font-size: 1.3em;
+    margin: 20px 0;
+    padding: 10px;
+    text-decoration:none;
+    color:#000000;
+    background: #D8BB9A;
+    border-radius: 10px;
+}
+
+.footer a:visited {
+    text-decoration:none;
+    color:#000000;
+}
+
+.footer a:hover {
+    background:#d4c4b0
+}
+
+.maininput  {
+    padding: 1em;
+    background: #F0F0F0;
+    border-radius: 10px;
+}
+
+.mainresults {
+    padding: 1em;
+    background: #F0F0F0;
+    border-radius: 10px;
+}
+
+.container1  {
+    background: #FFFA90;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.container2  {
+    background: #F0F0F0;
+    padding: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 10px;
+}
+
+.container3  {
+    background: #FFFA90;
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.container4  {
+    background: white;
+    padding: 0.5em;
+    margin: 0.5em 0;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.logo       {
+    display: block;
+    margin: 0px auto;
+    padding: 0 0 10px;
+}
+
+.eml    {
+    border-radius: 10px;
+    background: white;
+    padding: 0.2em;
+}
+
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1200px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 1200px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -600px;   /* 50% */
+  }
+}
+
+         
